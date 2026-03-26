@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brand Positioning Graph – Atelier Cuisine</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: #f5f4f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 32px 16px;
+    }
+    h1 { font-size: 18px; font-weight: 500; color: #2c2c2a; margin-bottom: 4px; text-align: center; }
+    p.sub { font-size: 13px; color: #73726c; margin-bottom: 24px; text-align: center; }
+    #chart-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 780px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #d3d1c7;
+      padding: 24px 24px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    #tooltip {
+      position: absolute;
+      background: #ffffff;
+      border: 1px solid #b4b2a9;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #2c2c2a;
+      max-width: 215px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      z-index: 10;
+      line-height: 1.7;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    #tooltip strong { font-weight: 600; display: block; margin-bottom: 2px; }
+    #tooltip .pain { color: #5f5e5a; font-style: italic; margin-top: 4px; display: block; }
+    svg { display: block; width: 100%; }
+    .node { cursor: pointer; }
+    .node circle { transition: opacity .15s; }
+    .node:hover circle { opacity: 0.8; }
+    footer { margin-top: 16px; font-size: 11px; color: #b4b2a9; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>Brand Positioning — Atelier Cuisine</h1>
+  <p class="sub">Nürnberg / Fürth cooking class market &nbsp;·&nbsp; Hover over a brand for details</p>
+
+  <div id="chart-wrap">
+    <div id="tooltip"></div>
+    <svg viewBox="0 0 720 580" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+      </defs>
+
+      <!-- Quadrant fills -->
+      <rect x="70" y="40" width="290" height="270" fill="#f5f4f0"/>
+      <rect x="360" y="40" width="310" height="270" fill="#f0faf5"/>
+      <rect x="70" y="310" width="290" height="230" fill="#f5f4f0" opacity="0.7"/>
+      <rect x="360" y="310" width="310" height="230" fill="#e1f5ee" opacity="0.5"/>
+
+      <!-- Quadrant labels -->
+      <text x="82" y="60" font-family="-apple-system,sans-serif" font-size="11" fill="#b4b2a9">Mass market · Surface level</text>
+      <text x="372" y="60" font-family="-apple-system,sans-serif" font-size="11" fill="#b4b2a9">Boutique · Surface level</text>
+      <text x="82" y="326" font-family="-apple-system,sans-serif" font-size="11" fill="#b4b2a9">Mass market · Skill-building</text>
+      <text x="372" y="326" font-family="-apple-system,sans-serif" font-size="11" fill="#0F6E56" font-weight="500">Boutique · Skill-building ★</text>
+
+      <!-- Grid lines -->
+      <line x1="70" y1="310" x2="670" y2="310" stroke="#d3d1c7" stroke-width="1" stroke-dasharray="5 4"/>
+      <line x1="360" y1="40" x2="360" y2="540" stroke="#d3d1c7" stroke-width="1" stroke-dasharray="5 4"/>
+
+      <!-- Axes -->
+      <line x1="70" y1="540" x2="668" y2="540" stroke="#888780" stroke-width="1.2" marker-end="url(#arrow)"/>
+      <line x1="70" y1="540" x2="70" y2="42" stroke="#888780" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+      <!-- Axis endpoint labels -->
+      <text x="82" y="556" font-family="-apple-system,sans-serif" font-size="11" fill="#888780">Mass market</text>
+      <text x="648" y="556" font-family="-apple-system,sans-serif" font-size="11" fill="#888780" text-anchor="end">Boutique</text>
+      <text x="82" y="536" font-family="-apple-system,sans-serif" font-size="11" fill="#888780">Surface level</text>
+      <text x="82" y="58" font-family="-apple-system,sans-serif" font-size="11" fill="#888780">Deep skill</text>
+
+      <!-- Axis titles -->
+      <text x="370" y="574" font-family="-apple-system,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" text-anchor="middle">Group size / Accessibility</text>
+      <text x="20" y="290" font-family="-apple-system,sans-serif" font-size="13" font-weight="500" fill="#2c2c2a" text-anchor="middle" transform="rotate(-90 20 290)">Skill-building depth</text>
+
+      <!-- VHS -->
+      <g class="node" id="b-vhs">
+        <circle cx="145" cy="195" r="26" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+        <text x="145" y="191" font-family="-apple-system,sans-serif" font-size="11" font-weight="500" fill="#2c2c2a" text-anchor="middle" dominant-baseline="central">VHS</text>
+        <text x="145" y="207" font-family="-apple-system,sans-serif" font-size="10" fill="#73726c" text-anchor="middle" dominant-baseline="central">€35–55</text>
+      </g>
+
+      <!-- Furniture Retailers -->
+      <g class="node" id="b-furn">
+        <circle cx="215" cy="115" r="28" fill="#F1EFE8" stroke="#888780" stroke-width="1"/>
+        <text x="215" y="108" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#2c2c2a" text-anchor="middle" dominant-baseline="central">Furniture</text>
+        <text x="215" y="122" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#2c2c2a" text-anchor="middle" dominant-baseline="central">Retailers</text>
+        <text x="215" y="136" font-family="-apple-system,sans-serif" font-size="10" fill="#73726c" text-anchor="middle" dominant-baseline="central">€49–79</text>
+      </g>
+
+      <!-- Cookionista -->
+      <g class="node" id="b-cook">
+        <circle cx="268" cy="228" r="36" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+        <text x="268" y="222" font-family="-apple-system,sans-serif" font-size="11" font-weight="500" fill="#4A1B0C" text-anchor="middle" dominant-baseline="central">Cookionista</text>
+        <text x="268" y="238" font-family="-apple-system,sans-serif" font-size="10" fill="#993C1D" text-anchor="middle" dominant-baseline="central">€115–139</text>
+      </g>
+
+      <!-- Mixtura -->
+      <g class="node" id="b-mix">
+        <circle cx="285" cy="360" r="30" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+        <text x="285" y="354" font-family="-apple-system,sans-serif" font-size="11" font-weight="500" fill="#412402" text-anchor="middle" dominant-baseline="central">Mixtura</text>
+        <text x="285" y="370" font-family="-apple-system,sans-serif" font-size="10" fill="#854F0B" text-anchor="middle" dominant-baseline="central">€99–125</text>
+      </g>
+
+      <!-- Culinary Collective -->
+      <g class="node" id="b-cc">
+        <circle cx="468" cy="215" r="32" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+        <text x="468" y="207" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#04342C" text-anchor="middle" dominant-baseline="central">Culinary</text>
+        <text x="468" y="221" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#04342C" text-anchor="middle" dominant-baseline="central">Collective</text>
+        <text x="468" y="236" font-family="-apple-system,sans-serif" font-size="10" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">€125+</text>
+      </g>
+
+      <!-- Private Chef -->
+      <g class="node" id="b-priv">
+        <circle cx="572" cy="140" r="32" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+        <text x="572" y="133" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#26215C" text-anchor="middle" dominant-baseline="central">Private</text>
+        <text x="572" y="147" font-family="-apple-system,sans-serif" font-size="10" font-weight="500" fill="#26215C" text-anchor="middle" dominant-baseline="central">Chef</text>
+        <text x="572" y="161" font-family="-apple-system,sans-serif" font-size="10" fill="#534AB7" text-anchor="middle" dominant-baseline="central">€145–190</text>
+      </g>
+
+      <!-- Atelier Cuisine (hero) -->
+      <g class="node" id="b-atelier">
+        <circle cx="510" cy="442" r="44" fill="#1D9E75" stroke="#085041" stroke-width="2"/>
+        <text x="510" y="432" font-family="-apple-system,sans-serif" font-size="13" font-weight="600" fill="#E1F5EE" text-anchor="middle" dominant-baseline="central">Atelier</text>
+        <text x="510" y="448" font-family="-apple-system,sans-serif" font-size="13" font-weight="600" fill="#E1F5EE" text-anchor="middle" dominant-baseline="central">Cuisine</text>
+        <text x="510" y="464" font-family="-apple-system,sans-serif" font-size="11" fill="#9FE1CB" text-anchor="middle" dominant-baseline="central">€99</text>
+      </g>
+      <text x="510" y="496" font-family="-apple-system,sans-serif" font-size="11" font-weight="500" fill="#0F6E56" text-anchor="middle">★ Sweet spot</text>
+
+      <!-- Hint -->
+      <text x="668" y="56" font-family="-apple-system,sans-serif" font-size="10" fill="#b4b2a9" text-anchor="end">Hover over brands for details</text>
+    </svg>
+  </div>
+
+  <footer>Atelier Cuisine · Brand Positioning Map · Nürnberg cooking class market</footer>
+
+  <script>
+    const data = {
+      'b-vhs':     { name: 'VHS (Volkshochschule)', price: '€35–55', size: '10–15 people', pain: 'Sterile school-kitchen; basic ingredients; no atmosphere.' },
+      'b-furn':    { name: 'Furniture Retailers', price: '€49–79', size: '12–15 people', pain: 'Pure sales funnel — goal is to sell kitchens, not teach cooking.' },
+      'b-cook':    { name: 'Cookionista', price: '€115–139', size: 'Up to 60+ (B2B)', pain: 'Industrial feel; impersonal; low 1-on-1 time with the chef.' },
+      'b-mix':     { name: 'Mixtura', price: '€99–125', size: '12–20 people', pain: 'Follows recipes; lacks deep technical skill-building.' },
+      'b-cc':      { name: 'The Culinary Collective', price: '€125+', size: '8–14 people', pain: 'B2B-focused; less accessible for casual home-cooking events.' },
+      'b-priv':    { name: 'Private Chef / Boutique', price: '€145–190', size: '4–8 people', pain: 'Too formal or expensive for casual social settings.' },
+      'b-atelier': { name: '★ Atelier Cuisine', price: '€99', size: '8–10 people', pain: 'Solves: language barriers, clean-up fatigue & recipe-dependency.' }
+    };
+
+    const tip = document.getElementById('tooltip');
+    const wrap = document.getElementById('chart-wrap');
+
+    Object.keys(data).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('mouseenter', () => {
+        const d = data[id];
+        tip.innerHTML = '<strong>' + d.name + '</strong>Price: ' + d.price + '<br>Group: ' + d.size + '<span class="pain">' + d.pain + '</span>';
+        tip.style.opacity = '1';
+      });
+      el.addEventListener('mousemove', e => {
+        const rect = wrap.getBoundingClientRect();
+        let x = e.clientX - rect.left + 14;
+        let y = e.clientY - rect.top + 14;
+        if (x + 225 > rect.width) x = e.clientX - rect.left - 228;
+        if (y + 110 > rect.height) y = e.clientY - rect.top - 114;
+        tip.style.left = x + 'px';
+        tip.style.top = y + 'px';
+      });
+      el.addEventListener('mouseleave', () => { tip.style.opacity = '0'; });
+    });
+  </script>
+</body>
+</html>
